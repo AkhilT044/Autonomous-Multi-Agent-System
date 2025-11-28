@@ -67,3 +67,29 @@ AI-Hedge-Fund/
 ├── app.py                # The Main Application (Logic + UI)
 ├── requirements.txt      # Dependencies for Cloud Deployment
 └── README.md             # Documentation
+
+
+
+## 🛡️ Security & Reliability Features
+
+We designed this agent with specific safeguards for competition environments and scalability.
+
+### 1. The "Bring Your Own Key" (BYOK) Architecture
+Instead of hardcoding our API credentials, the app requires users to input their own Google Gemini API Key.
+* **Why?** To prevent quota exhaustion during public demos and ensure security best practices.
+* **How:** The key is stored temporarily in the session state and is never saved to a database.
+
+### 2. The "Simulation Mode" (Fault Tolerance)
+We implemented a robust fallback mechanism to handle the Google Gemini Free Tier limits (`429 Too Many Requests`).
+* **The Problem:** In a hackathon demo, if 10 judges click "Analyze" simultaneously, the API quota will crash the app.
+* **Our Solution:** If the API fails, the agent automatically switches to **Simulation Mode**. It generates a pre-scripted "Mock Decision" to ensure the UI flow (Charts → Analysis → Email) completes successfully without an error screen.
+* **User Feedback:** A warning banner `⚠️ API busy, using simulation data` appears so the user knows exactly what is happening.
+
+### 3. The Email Alert System (Privacy-First)
+The agent features a dual-mode notification system for "Buy/Sell" signals.
+* **Mode A (Visual Simulation - Default):** Uses `st.toast` popup notifications to simulate an alert being sent.
+    * *Reasoning:* To protect user privacy and avoid triggering Gmail's anti-spam blockers during repeated testing.
+* **Mode B (Real SMTP - Configurable):** The backend supports full SMTP integration (`smtplib`).
+    * *How to Enable:* Users can open the sidebar expander **"🔐 Email Config"** and enter their own Gmail App Password to enable real-world emailing. This proves the backend logic is fully functional while keeping the default experience safe.
+
+---
