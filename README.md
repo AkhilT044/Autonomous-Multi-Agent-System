@@ -20,6 +20,8 @@
 ### 👉 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://multi-agent-stock-analysis-system-ib22heed3d7ht3xdxsjwuz.streamlit.app/)
 *(Note: The app supports BYOK (Bring Your Own Key) for security. If you don't have a key, it runs in Simulation Mode to demonstrate functionality.)*
 
+### YouTube link of Project Explanation 👉 [![YouTube](https://img.shields.io/badge/YouTube-Project%20Explanation-red?logo=youtube)](https://www.youtube.com/watch?v=Wdd1GY8IwZU)
+
 ---
 
 ## 🧠 The Architecture (How it Works)
